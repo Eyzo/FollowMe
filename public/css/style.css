@@ -1,0 +1,63 @@
+.link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.search {
+    border-radius: 25px;
+}
+
+.bg-style {
+    background-color: #78BEC3;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    font-family: perso;
+}
+
+@font-face {
+    font-family: perso;
+    src: url("fonts/postnobillscolombo-semibold.ttf");
+}
+
+.search-icon {
+    font-size: 1.5em;
+    color: black;
+}
+
+.links-group {
+    margin-left: 15px;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: #E6ECF0;
+}
+
+.box-background {
+    margin-top: 40px;
+    background-color: #FFF;
+    padding: 25px;
+}
+
+.box {
+    margin-top: 40px;
+}
+
+.card-deck {
+    margin-bottom: 20px;
+}
+
+.btn-search {
+    padding: 0px;
+}
+
+.nav-item {
+    color: black;
+    font-weight: 500;
+}
+

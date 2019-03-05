@@ -36,6 +36,12 @@ class Profile
      */
     private $subscribers = [];
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="profile", cascade={"persist", "remove"})
+     */
+    private $user;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +91,18 @@ class Profile
     public function setSubscribers(?array $subscribers): self
     {
         $this->subscribers = $subscribers;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
