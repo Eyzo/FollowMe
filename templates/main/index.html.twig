@@ -21,7 +21,7 @@
                         {% if app.user %}
                             {% if app.user.profile.id in profile.subscribers %}
                                 <a class="btn btn-danger"
-                                   id="button-success"
+                                   id="button-error"
                                    href="{{ path('unsubscribe',{ 'id' : profile.id }) }}">Unfollow</a>
                             {% else %}
                                 <a class="btn btn-success"

@@ -69,7 +69,7 @@ body {
     width: 45%;
 }
 
-#button-success {
+#button-success,#button-error {
     margin-left: 10%;
 }
 

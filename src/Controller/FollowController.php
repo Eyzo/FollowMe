@@ -59,7 +59,7 @@ class FollowController extends AbstractController
         $em->flush();
 
         return $this->json([
-            'subscribe' => True,
+            'subscribe' => False,
             'account' => $currentProfile->getName(),
             'follow' => $user->getProfile()->getName(),
             'count_followers' => count($user->getProfile()->getSubscribers())
