@@ -5,18 +5,35 @@
 {% block body %}
 
 <div class="container box">
+
     {% for row in profiles|batch(4) %}
     <div class="card-deck">
 
         {% for profile in row %}
         <div class="card">
             <img src="https://www.place-hold.it/300x300" class="card-img-top">
-            <div class="card-body">
+            <div class="main-card card-body">
                 <h5 class="card-title">{{ profile.name }}</h5>
                 <p class="card-text">{{ profile.description|resume(200) }}</p>
+                <div class="btn-group">
+                    <a class="btn btn-primary" id="button-view" href="#">Voir</a>
+
+                        {% if app.user %}
+                            {% if app.user.profile.id in profile.subscribers %}
+                                <a class="btn btn-danger"
+                                   id="button-success"
+                                   href="{{ path('unsubscribe',{ 'id' : profile.id }) }}">Unfollow</a>
+                            {% else %}
+                                <a class="btn btn-success"
+                                   id="button-success"
+                                   href="{{ path('subscribe',{'id': profile.id} ) }}">Follow</a>
+                            {% endif %}
+                        {% endif %}
+
+                </div>
             </div>
             <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">Nombre de followers : {{ profile.subscribers | length }}</small>
             </div>
         </div>
         {% endfor %}

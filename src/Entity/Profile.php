@@ -76,9 +76,12 @@ class Profile
         return $this->subscribe;
     }
 
-    public function setSubscribe(?array $subscribe): self
+    public function setSubscribe(?string $subscribe): self
     {
-        $this->subscribe = $subscribe;
+        if (!in_array($subscribe,$this->subscribe))
+        {
+            array_push($this->subscribe,$subscribe);
+        }
 
         return $this;
     }
@@ -88,9 +91,13 @@ class Profile
         return $this->subscribers;
     }
 
-    public function setSubscribers(?array $subscribers): self
+    public function setSubscribers(?string $subscribers): self
     {
-        $this->subscribers = $subscribers;
+        if (!in_array($subscribers,$this->subscribers)) {
+
+            $this->subscribers[] = $subscribers;
+
+        }
 
         return $this;
     }
@@ -103,6 +110,30 @@ class Profile
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function removeSubscribe(int $id): self {
+
+        if (in_array($id,$this->subscribe)) {
+
+            $key = array_search($id,$this->subscribe);
+            unset($this->subscribe[$key]);
+
+        }
+
+        return $this;
+    }
+
+    public function removeSubscribers(int $id):self {
+
+        if (in_array($id,$this->subscribers)) {
+
+            $key = array_search($id,$this->subscribers);
+            unset($this->subscribers[$key]);
+
+        }
 
         return $this;
     }

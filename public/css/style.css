@@ -61,3 +61,21 @@ body {
     font-weight: 500;
 }
 
+.btn-group {
+    width: 100%;
+}
+
+.btn-group .btn {
+    width: 45%;
+}
+
+#button-success {
+    margin-left: 10%;
+}
+
+.main-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
