@@ -1,4 +1,4 @@
-let buttonFollow = document.querySelectorAll('#button-success');
+let buttonFollow = document.querySelectorAll('#button-follow');
 
 buttonFollow.forEach((element)=> {
 
@@ -6,41 +6,72 @@ buttonFollow.forEach((element)=> {
 
         e.preventDefault();
 
+        if (e.target.getAttribute('data-status') === 'active') {
+
+            e.target.setAttribute('data-status','desactive')
+
+        } else if(e.target.getAttribute('data-status') === 'desactive') {
+
+            e.target.setAttribute('data-status','active');
+
+        }
+
         let url = e.target.getAttribute("href");
 
-        getAjax(url,(response) => {
+        let oldHref = e.target.href;
+        let a = document.createElement('a');
+        a.id = 'button-follow';
 
-            response = JSON.parse(response);
-
-            let oldHref = e.target.href;
+        if (e.target.getAttribute('data-status') === 'desactive') {
 
             let newHref = oldHref.replace('subscribe','unsubscribe');
-
             let texte = document.createTextNode('Unfollow');
 
-            let a = document.createElement('a');
-
             a.classList.add('btn','btn-danger');
-            a.id = 'button-error';
             a.href = newHref;
             a.appendChild(texte);
 
-            e.target.parentNode.replaceChild(a,e.target);
+        } else {
+
+            let newHref = oldHref.replace('unsubscribe','subscribe');
+            let texte = document.createTextNode('Follow');
+
+
+            a.classList.add('btn','btn-success');
+            a.href = newHref;
+            a.appendChild(texte);
+
+        }
+
+        let parentNode = e.target.parentNode;
+
+        parentNode.removeChild(e.target);
+
+        parentNode.appendChild(a);
+
+
+        getAjax(url,(response) => {
+
+
+            response = JSON.parse(response);
 
             let regex = /[0-9]+/;
 
             let followersDom =  a.parentNode.parentNode.parentNode.querySelector('.text-muted');
 
-            let nbFollowersText = a.parentNode.parentNode.parentNode.querySelector('.text-muted').innerHTML;
+            for (let el in response) {
 
-            let nombreFollowers =  parseInt(nbFollowersText[nbFollowersText.search(regex)]);
+                if (el === 'count_followers')
+                {
+                    var nbFollowers = response[el];
+                }
+            }
 
-            nbFollowersNewText = document.createTextNode(nbFollowersText.replace(regex,nombreFollowers + 1));
+            nbFollowersNewText = document.createTextNode(followersDom.innerHTML.replace(regex,nbFollowers));
 
             followersDom.innerHTML = '';
 
             followersDom.appendChild(nbFollowersNewText);
-
 
         });
 

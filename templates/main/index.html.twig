@@ -21,11 +21,13 @@
                         {% if app.user %}
                             {% if app.user.profile.id in profile.subscribers %}
                                 <a class="btn btn-danger"
-                                   id="button-error"
+                                   id="button-follow"
+                                   data-status="desactive"
                                    href="{{ path('unsubscribe',{ 'id' : profile.id }) }}">Unfollow</a>
                             {% else %}
                                 <a class="btn btn-success"
-                                   id="button-success"
+                                   id="button-follow"
+                                   data-status="active"
                                    href="{{ path('subscribe',{'id': profile.id} ) }}">Follow</a>
                             {% endif %}
                         {% endif %}
