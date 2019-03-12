@@ -1,8 +1,6 @@
 let buttonFollow = document.querySelectorAll('#button-follow');
 
-buttonFollow.forEach((element)=> {
-
-    element.addEventListener('click',(e) => {
+function eventClick(e) {
 
         e.preventDefault();
 
@@ -28,6 +26,7 @@ buttonFollow.forEach((element)=> {
             let texte = document.createTextNode('Unfollow');
 
             a.classList.add('btn','btn-danger');
+            a.setAttribute('data-status','desactive');
             a.href = newHref;
             a.appendChild(texte);
 
@@ -38,6 +37,7 @@ buttonFollow.forEach((element)=> {
 
 
             a.classList.add('btn','btn-success');
+            a.setAttribute('data-status','active');
             a.href = newHref;
             a.appendChild(texte);
 
@@ -45,10 +45,7 @@ buttonFollow.forEach((element)=> {
 
         let parentNode = e.target.parentNode;
 
-        parentNode.removeChild(e.target);
-
-        parentNode.appendChild(a);
-
+        parentNode.replaceChild(a,e.target);
 
         getAjax(url,(response) => {
 
@@ -74,9 +71,16 @@ buttonFollow.forEach((element)=> {
             followersDom.appendChild(nbFollowersNewText);
 
         });
+}
 
-    })
+document.addEventListener('click',(e) => {
+
+    if (e.target && e.target.id === 'button-follow') {
+
+        eventClick(e);
+
+    }
+
 });
-
 
 
