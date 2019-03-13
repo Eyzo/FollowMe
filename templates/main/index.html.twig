@@ -16,7 +16,7 @@
                 <h5 class="card-title">{{ profile.name }}</h5>
                 <p class="card-text">{{ profile.description|resume(200) }}</p>
                 <div class="btn-group">
-                    <a class="btn btn-primary" id="button-view" href="#">Voir</a>
+                    <a class="btn btn-primary" id="button-view" href="{{ path('user.profile') }}">Voir</a>
 
                         {% if app.user %}
                             {% if app.user.profile.id in profile.subscribers %}

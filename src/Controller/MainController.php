@@ -65,4 +65,15 @@ class MainController extends AbstractController
             'subscribes' => $subscribes
         ]);
     }
+
+    /**
+     *@Route("/profile",name="user.profile")
+     */
+    public function seeProfile() {
+
+
+        return $this->render('main/profile.html.twig');
+    }
+
+
 }
