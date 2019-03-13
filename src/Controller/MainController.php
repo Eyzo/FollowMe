@@ -20,4 +20,49 @@ class MainController extends AbstractController
             'profiles' => $profiles,
         ]);
     }
+
+    /**
+     * @Route("/followers",name="my.followers")
+     */
+    public function myFollowers(ObjectManager $em) {
+
+        $profile = $this->getUser()->getProfile();
+
+        $subscribersId = $profile->getSubscribers();
+
+        $subscribers = [];
+
+        foreach ($subscribersId as $subscriberId){
+
+            $subscribers[] = $em->getRepository(Profile::class)->find($subscriberId);
+
+        }
+
+        return $this->render('main/followers.html.twig',[
+            'subscribers' => $subscribers
+        ]);
+
+    }
+
+    /**
+     * @Route("/follows",name="my.follows")
+     */
+    public function myFollows(ObjectManager $em) {
+
+        $profile = $this->getUser()->getProfile();
+
+        $subscribesId = $profile->getSubscribe();
+
+        $subscribes = [];
+
+        foreach ($subscribesId as $subscribeId) {
+
+            $subscribes[] = $em->getRepository(Profile::class)->find($subscribeId);
+
+        }
+
+        return $this->render('main/follows.html.twig',[
+            'subscribes' => $subscribes
+        ]);
+    }
 }

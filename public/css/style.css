@@ -30,6 +30,7 @@
 }
 
 .links-group {
+    display: flex;
     margin-left: 15px;
 }
 
