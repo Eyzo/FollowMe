@@ -6,6 +6,10 @@
 
 <div class="container box">
 
+    {% for messages in app.flashes('success') %}
+        <div class="alert alert-success">{{ messages }}</div>
+    {% endfor %}
+
     {% for row in profiles|batch(4) %}
     <div class="card-deck">
 

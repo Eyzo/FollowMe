@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profile{% endblock %}
+
+{% block body %}
+
+    <div class="box-background container">
+
+    {% for messages in app.flashes('success') %}
+        <div class="alert alert-success">{{ messages }}</div>
+    {% endfor %}
+
+    <h2>Mon Profile :</h2>
+
+    {{ form_start(form) }}
+
+        {{ form_row(form.name) }}
+
+        {{ form_row(form.description) }}
+
+        <div class="form-group">
+
+            <input type="submit" class="btn btn-primary" value="Modifier">
+
+        </div>
+
+    {{ form_end(form) }}
+
+    </div>
+{% endblock %}

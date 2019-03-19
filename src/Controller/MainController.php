@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Profile;
+use App\Form\MyProfileType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
@@ -73,6 +75,33 @@ class MainController extends AbstractController
 
 
         return $this->render('main/profile.html.twig');
+    }
+
+
+    /**
+     * @Route("/myprofile",name="my.profile")
+     */
+    public function seeMyProfile(Request $request,ObjectManager $em) {
+
+        $profile = $this->getUser()->getProfile();
+
+        $form = $this->createForm(MyProfileType::class,$profile);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->addFlash('success','le profile a bien été modifier');
+
+            $em->flush();
+
+        }
+
+        return $this->render('main/myprofile.html.twig',[
+            'form' => $form->createView(),
+            'profile' => $profile
+        ]);
+
     }
 
 
