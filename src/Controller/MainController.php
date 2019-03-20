@@ -18,6 +18,8 @@ class MainController extends AbstractController
     {
         $profiles = $manager->getRepository(Profile::class)->findAll();
 
+        dump($this->getUser());
+
         return $this->render('main/index.html.twig', [
             'profiles' => $profiles,
         ]);

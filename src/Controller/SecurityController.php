@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -36,7 +38,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/register",name="register")
      */
-    public function register(Request $request,ObjectManager $em) {
+    public function register(Request $request,ObjectManager $em,UserPasswordEncoderInterface $encoder) {
 
         $user = new User();
 
@@ -48,9 +50,20 @@ class SecurityController extends AbstractController
 
             $this->addFlash('success','Votre compte a bien été créer');
 
+            $password = $encoder->encodePassword($user,$form->getData()->getPassword());
+
+            $user->setPassword($password);
+
+            $user->setRoles(array("ROLE_USER"));
+
             $em->persist($user);
 
             $em->flush();
+
+            $token = new UsernamePasswordToken($user,null,'main',$user->getRoles());
+
+            $this->container->get('security.token_storage')->setToken($token);
+            $this->container->get('session')->set('_security_main',serialize($token));
 
             return $this->redirectToRoute('main');
 
