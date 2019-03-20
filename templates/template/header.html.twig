@@ -18,15 +18,19 @@
             </form>
 
             <div class="links-group">
-                <li class="link nav-item active">
-                    <a class="nav-link" href="{{ path('my.followers') }}">Mes Followers</a>
-                </li>
-                <li class="link nav-item active">
-                    <a class="nav-link" href="{{ path('my.follows') }}">Mes Follows</a>
-                </li>
-                <li class="link nav-item active">
-                    <a class="nav-link" href="{{ path('my.profile') }}">Mon Profile</a>
-                </li>
+                {% if app.user %}
+                    {% if app.user.profile %}
+                        <li class="link nav-item active">
+                            <a class="nav-link" href="{{ path('my.followers') }}">Mes Followers</a>
+                        </li>
+                        <li class="link nav-item active">
+                            <a class="nav-link" href="{{ path('my.follows') }}">Mes Follows</a>
+                        </li>
+                    {% endif %}
+                    <li class="link nav-item active">
+                        <a class="nav-link" href="{{ path('my.profile') }}">Mon Profile</a>
+                    </li>
+                {% endif %}
             </div>
         </ul>
         <div>

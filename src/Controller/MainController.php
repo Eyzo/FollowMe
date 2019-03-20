@@ -87,21 +87,51 @@ class MainController extends AbstractController
 
         $profile = $this->getUser()->getProfile();
 
-        $form = $this->createForm(MyProfileType::class,$profile);
+        if ($profile) {
 
-        $form->handleRequest($request);
+            $status = 'edit';
 
-        if ($form->isSubmitted() && $form->isValid()) {
+            $form = $this->createForm(MyProfileType::class, $profile);
 
-            $this->addFlash('success','le profile a bien été modifier');
+            $form->handleRequest($request);
 
-            $em->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $this->addFlash('success', 'le profile a bien été modifier');
+
+                $em->flush();
+
+
+            }
+        } else {
+
+            $status = 'new';
+
+            $profile = new Profile();
+
+            $form = $this->createForm(MyProfileType::class,$profile);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $profile->setUser($this->getUser());
+
+                $this->getUser()->setProfile($profile);
+
+                $this->addFlash('success','Votre Profile a bien était créer');
+
+                $em->persist($profile);
+
+                $em->flush();
+            }
 
         }
 
         return $this->render('main/myprofile.html.twig',[
             'form' => $form->createView(),
-            'profile' => $profile
+            'profile' => $profile,
+            'status' => $status
         ]);
 
     }

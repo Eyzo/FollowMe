@@ -20,7 +20,8 @@
 
         <div class="form-group">
 
-            <input type="submit" class="btn btn-primary" value="Modifier">
+            <input type="submit" class="btn btn-primary"
+                   value="{% if status == 'edit' %}Modifier{% else %}Créer{% endif %}">
 
         </div>
 
