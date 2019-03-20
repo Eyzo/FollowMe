@@ -53,10 +53,19 @@
                     </div>
                 #}
 
-                <div class="login-container form-group">
-                <button class="btn btn-primary" type="submit">
-                    Connexion
-                </button>
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <a href="{{ path('forgotten.password') }}" >Vous avez perdu votre mot de passe ?</a>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="login-container form-group">
+                            <button class="btn btn-primary" type="submit">
+                                Connexion
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
             </form>

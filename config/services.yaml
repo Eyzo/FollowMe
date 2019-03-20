@@ -37,3 +37,7 @@ services:
     App\TwigExtension\:
         resource: '../src/TwigExtension'
         tags: ['twig.extension']
+
+    app.email_service:
+        class: App\Services\MailService
+        arguments: ['@mailer','@twig']
