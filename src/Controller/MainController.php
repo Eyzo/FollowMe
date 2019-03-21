@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Entity\Profile;
 use App\Form\MyProfileType;
 use Doctrine\Common\Persistence\ObjectManager;
+use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
@@ -134,6 +137,21 @@ class MainController extends AbstractController
             'status' => $status
         ]);
 
+    }
+
+    /**
+     * @Route("/generateElement/{id}",name="generate.element",methods={"GET"})
+     */
+    public function generateElement(ObjectManager $em,SerializerInterface $serializer,int $id) {
+
+        $elements = $em->getRepository(Profile::class)->findOtherElement($id);
+
+        $data = $serializer->serialize($elements,'json');
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type','application/json');
+
+        return $response;
     }
 
 

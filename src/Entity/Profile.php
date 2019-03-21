@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use JMS\Serializer\Annotation as Serializer;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProfileRepository")
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Profile
 {
@@ -13,16 +15,19 @@ class Profile
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Expose
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Expose
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Serializer\Expose
      */
     private $description;
 

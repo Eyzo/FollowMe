@@ -19,6 +19,17 @@ class ProfileRepository extends ServiceEntityRepository
         parent::__construct($registry, Profile::class);
     }
 
+    public function findOtherElement(int $id) {
+
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id > :id')
+            ->setParameter('id',$id)
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return Profile[] Returns an array of Profile objects
     //  */
