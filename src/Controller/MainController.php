@@ -7,6 +7,7 @@ use App\Form\MyProfileType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
@@ -16,9 +17,8 @@ class MainController extends AbstractController
      */
     public function index(ObjectManager $manager)
     {
-        $profiles = $manager->getRepository(Profile::class)->findAll();
+        $profiles = $manager->getRepository(Profile::class)->findProfilesMainPage();
 
-        dump($this->getUser());
 
         return $this->render('main/index.html.twig', [
             'profiles' => $profiles,
@@ -132,6 +132,23 @@ class MainController extends AbstractController
             'form' => $form->createView(),
             'profile' => $profile,
             'status' => $status
+        ]);
+
+    }
+
+    /**
+     * @Route("/page/{id}",name="page")
+     */
+    public function page(ObjectManager $em,int $id) {
+
+        $profiles = $em->getRepository(Profile::class)->findOtherElements($id);
+
+        if (empty($profiles)) {
+            return new Response('',Response::HTTP_NOT_FOUND);
+        }
+
+        return $this->render('main/cards.html.twig',[
+            'profiles' => $profiles
         ]);
 
     }
