@@ -44,7 +44,7 @@ class User implements UserInterface
      */
     private $resetToken;
 
-    public function getResetToken(): string {
+    public function getResetToken() {
         return $this->resetToken;
     }
 
