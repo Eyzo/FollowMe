@@ -153,5 +153,22 @@ class MainController extends AbstractController
 
     }
 
+    /**
+     * @Route("/search_profile/ajax",name="search.ajax")
+     */
+    public function searchProfilesAjax(Request $request,ObjectManager $em) {
+
+        $search = trim($request->query->get('profile'));
+
+        $profiles = $em->getRepository(Profile::class)->search($search);
+
+        dump($profiles);
+
+
+        return $this->render('search/result.html.twig',[
+            'profiles' => $profiles
+        ]);
+    }
+
 
 }

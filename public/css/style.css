@@ -119,6 +119,28 @@ body {
     animation-fill-mode: forwards;
 }
 
+.search-container {
+    position: relative;
+}
+
+.result {
+    z-index: 9997;
+    position: absolute;
+    left: 0px;
+    top: 50px;
+    width: 200px;
+    background-color: #FFF;
+}
+
+.resultat {
+    padding: 5px;
+    text-align: center;
+}
+
+.text-result{
+    margin-bottom: 5px;
+}
+
 @keyframes fadeOut {
 
     from {

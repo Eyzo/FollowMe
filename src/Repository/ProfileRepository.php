@@ -38,6 +38,16 @@ class ProfileRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function search(string $search) {
+        return $this->createQueryBuilder('p')
+            ->andWhere("p.name LIKE :search")
+            ->setParameter('search',$search.'%')
+            ->orderBy('p.id','DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Profile[] Returns an array of Profile objects
     //  */
