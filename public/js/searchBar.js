@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded',function () {
 
+
+
     let searchUser = document.querySelector('#search-user');
 
-    searchUser.onkeyup = function (e) {
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+    searchUser.onkeyup = delay(function (e) {
 
         let profile = e.target.value;
         let result = document.querySelector('.result');
@@ -32,6 +45,8 @@ document.addEventListener('DOMContentLoaded',function () {
             });
         }
 
-    }
+    },500);
+
+
 
 });

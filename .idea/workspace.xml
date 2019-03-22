@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b23b9d07-0b94-4950-a95d-6dadec35acff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/searchBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/search/result.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProfileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProfileRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/template/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/template/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/searchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/searchBar.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +45,17 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/searchBar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="696">
+              <caret line="47" column="11" lean-forward="true" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -116,8 +120,8 @@
         <option value="$PROJECT_DIR$/src/Repository/ProfileRepository.php" />
         <option value="$PROJECT_DIR$/src/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
-        <option value="$PROJECT_DIR$/public/js/searchBar.js" />
         <option value="$PROJECT_DIR$/templates/search/result.html.twig" />
+        <option value="$PROJECT_DIR$/public/js/searchBar.js" />
       </list>
     </option>
   </component>
@@ -246,8 +250,8 @@
       <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="991" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="984" />
     <option name="width" value="935" />
     <option name="height" value="1047" />
   </component>
@@ -274,7 +278,7 @@
               <item name="FollowMe" type="b2602c69:ProjectViewProjectNode" />
               <item name="FollowMe" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -331,12 +335,13 @@
       <workItem from="1553184862875" duration="49000" />
       <workItem from="1553186379055" duration="3313000" />
       <workItem from="1553251490208" duration="14414000" />
-      <workItem from="1553270360594" duration="600000" />
+      <workItem from="1553270360594" duration="739000" />
+      <workItem from="1553272913079" duration="5065000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99333000" />
+    <option name="totallyTimeSpent" value="104537000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -348,9 +353,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="991" y="0" width="935" height="1047" extended-state="1" />
+    <frame x="984" y="0" width="935" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26857144" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2742857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -363,7 +369,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.3297062" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297062" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.80196935" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.80196935" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -770,8 +776,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/searchBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="696">
+          <caret line="47" column="11" lean-forward="true" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
         </state>
       </provider>
     </entry>
