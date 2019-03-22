@@ -95,3 +95,39 @@ body {
     align-items: flex-end;
 }
 
+.loader {
+    background: url("gif/loader.gif") 50% 50% no-repeat;
+    position: fixed;
+    z-index: 9998;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.loader-container {
+    background: #FFF;
+    position: fixed;
+    z-index: 9999;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+}
+
