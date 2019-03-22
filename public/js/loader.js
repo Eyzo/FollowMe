@@ -1,4 +1,4 @@
-window.onload = function () {
+/*window.onload = function () {
 
     setTimeout(function () {
 
@@ -10,4 +10,4 @@ window.onload = function () {
 
     },1000)
 
-};
+};*/
