@@ -150,7 +150,12 @@ body {
 
 .img-profile-edit {
     width: 250px;
+    height: 250px;
     border-radius: 25%;
+}
+
+.card-img-top{
+    height: 300px;
 }
 
 @keyframes fadeOut {
