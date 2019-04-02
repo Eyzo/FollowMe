@@ -141,6 +141,18 @@ body {
     margin-bottom: 5px;
 }
 
+.image-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-profile-edit {
+    width: 250px;
+    border-radius: 25%;
+}
+
 @keyframes fadeOut {
 
     from {

@@ -12,36 +12,7 @@
             <div class="card-deck">
 
                 {% for subscriber in row %}
-                    <div class="card">
-                        <img src="https://www.place-hold.it/300x300" class="card-img-top">
-                        <div class="main-card card-body">
-                            <h5 class="card-title">{{ subscriber.name }}</h5>
-                            <p class="card-text">{{ subscriber.description|resume(200) }}</p>
-                            <div class="btn-group">
-                                <a class="btn btn-primary" id="button-view" href="#">Voir</a>
-
-                                {% if app.user %}
-
-                                    {% if app.user.profile.id in subscriber.subscribers %}
-                                        <a class="btn btn-danger"
-                                           id="button-follow"
-                                           data-status="desactive"
-                                           href="{{ path('unsubscribe',{ 'id' : subscriber.id }) }}">Unfollow</a>
-                                    {% else %}
-                                        <a class="btn btn-success"
-                                           id="button-follow"
-                                           data-status="active"
-                                           href="{{ path('subscribe',{'id': subscriber.id} ) }}">Follow</a>
-                                    {% endif %}
-
-                                {% endif %}
-
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Nombre de followers : {{ subscriber.subscribers | length }}</small>
-                        </div>
-                    </div>
+                    {% include 'main/cards/card.html.twig' with { profile: subscriber } %}
                 {% endfor %}
 
             </div>

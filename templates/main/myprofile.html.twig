@@ -18,6 +18,14 @@
 
         {{ form_row(form.description) }}
 
+        <div class="image-form-container">
+            {% if profile.image is not null %}
+                <img class="img-profile-edit" src="{{ vich_uploader_asset(profile.image,'imageFile') }}" alt="{{ profile.image.imageName }}">
+            {% endif %}
+        </div>
+
+        {{ form_row(form.image) }}
+
         <div class="form-group">
 
             <input type="submit" class="btn btn-primary"

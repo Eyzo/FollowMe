@@ -1,0 +1,34 @@
+<div class="card">
+    {% if profile.image is null %}
+        <img src="https://www.place-hold.it/300x300" class="card-img-top">
+    {% else %}
+        <img src="{{ vich_uploader_asset(profile.image,'imageFile') }}" class="card-img-top">
+    {% endif %}
+    <div class="main-card card-body">
+        <h5 class="card-title">{{ profile.name }}</h5>
+        <p class="card-text">{{ profile.description|resume(200) }}</p>
+        <div class="btn-group">
+            <a class="btn btn-primary" id="button-view" href="{{ path('user.profile') }}">Voir</a>
+
+            {% if app.user %}
+                {% if app.user.profile is not null %}
+                    {% if app.user.profile.id in profile.subscribers %}
+                        <a class="btn btn-danger"
+                           id="button-follow"
+                           data-status="desactive"
+                           href="{{ path('unsubscribe',{ 'id' : profile.id }) }}">Unfollow</a>
+                    {% else %}
+                        <a class="btn btn-success"
+                           id="button-follow"
+                           data-status="active"
+                           href="{{ path('subscribe',{'id': profile.id} ) }}">Follow</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="card-footer">
+        <small class="text-muted">Nombre de followers : {{ profile.subscribers | length }}</small>
+    </div>
+</div>

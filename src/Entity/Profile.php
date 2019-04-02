@@ -41,6 +41,11 @@ class Profile
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Media", cascade={"persist", "remove"})
+     */
+    private $image;
+
 
     public function getId(): ?int
     {
@@ -134,6 +139,18 @@ class Profile
             unset($this->subscribers[$key]);
 
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?Media
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Media $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
