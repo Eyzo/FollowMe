@@ -1,3 +1,4 @@
+{% if app.user is not null and app.user.profile is not null and app.user.profile.id !=  profile.id %}
 <div class="card">
     {% if profile.image is null %}
         <img src="https://www.place-hold.it/300x300" class="card-img-top">
@@ -32,3 +33,5 @@
         <small class="text-muted">Nombre de followers : {{ profile.subscribers | length }}</small>
     </div>
 </div>
+{% else %}
+{% endif %}
