@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Profile;
 use App\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,8 +13,9 @@ class FollowController extends AbstractController
     /**
      * @Route("/follow/subscribe/{id}", name="subscribe")
      */
-    public function Follow(User $user,ObjectManager $em)
+    public function Follow(Profile $profile,ObjectManager $em)
     {
+
         if (!$this->getUser())
         {
             $this->addFlash('danger','Vous devez être connecté pour follow cette personne');
@@ -23,24 +25,26 @@ class FollowController extends AbstractController
 
         $currentProfile = $this->getUser()->getProfile();
 
-        $currentProfile->setSubscribe($user->getProfile()->getId());
+        $currentProfile->setSubscribe($profile->getId());
 
-        $user->getProfile()->setSubscribers($currentProfile->getId());
+        $profile->setSubscribers($currentProfile->getId());
 
         $em->flush();
+
+
 
         return $this->json([
             'subscribe' => True,
             'account' => $currentProfile->getName(),
-            'follow' => $user->getProfile()->getName(),
-            'count_followers' => count($user->getProfile()->getSubscribers())
+            'follow' => $profile->getName(),
+            'count_followers' => count($profile->getSubscribers())
         ]);
     }
 
     /**
      * @Route("/follow/unsubscribe/{id}",name="unsubscribe")
      */
-    public function unFollow(User $user,ObjectManager $em) {
+    public function unFollow(Profile $profile,ObjectManager $em) {
 
         if (!$this->getUser()) {
 
@@ -52,17 +56,17 @@ class FollowController extends AbstractController
 
         $currentProfile = $this->getUser()->getProfile();
 
-        $currentProfile->removeSubscribe($user->getProfile()->getId());
+        $currentProfile->removeSubscribe($profile->getId());
 
-        $user->getProfile()->removeSubscribers($currentProfile->getId());
+        $profile->removeSubscribers($currentProfile->getId());
 
         $em->flush();
 
         return $this->json([
             'subscribe' => False,
             'account' => $currentProfile->getName(),
-            'follow' => $user->getProfile()->getName(),
-            'count_followers' => count($user->getProfile()->getSubscribers())
+            'follow' => $profile->getName(),
+            'count_followers' => count($profile->getSubscribers())
         ]);
 
     }
